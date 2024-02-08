@@ -55,6 +55,23 @@ public:
         }
     }
     
+    void copy_array(smart_array& arr_copy)
+    {
+        for (int i = 0; i < size; ++i)
+          {
+            arr_copy.add_element(arr[i]);
+          }
+      
+    }
+
+    void replace_array(smart_array& arr_copy)
+    {
+        for (int i = 0; i < size; ++i)
+          {
+            arr[i] = arr_copy.get_element(i);
+          }
+    }
+    
     void delete_array()
     {
         delete [] arr;
@@ -94,8 +111,7 @@ int main(int argc, const char * argv[]) {
         std::cout << std::endl;
         
         
-        
-        arr = std::move(new_array);
+        arr.replace_array(new_array);
         
         
         arr.print_array();
@@ -104,7 +120,10 @@ int main(int argc, const char * argv[]) {
        
         new_array.print_array();
         std::cout << std::endl;
-
+        
+        new_array.delete_array();
+        
+        
         
 
     }
