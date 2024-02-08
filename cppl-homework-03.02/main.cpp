@@ -22,7 +22,7 @@ private:
 class smart_array {
 private:
     int* arr;
-    int size;
+    unsigned size;
     unsigned arr_length = 0;
 public:
     smart_array (int size): arr(new int[size]), size(size)
@@ -55,17 +55,13 @@ public:
         }
     }
     
-    void copy_array(smart_array& arr_copy)
-    {
-        for (int i = 0; i < size; ++i)
-          {
-            arr_copy.add_element(arr[i]);
-          }
-      
-    }
 
     void replace_array(smart_array& arr_copy)
     {
+      delete [] arr;
+      arr = arr_copy.arr;
+      size = arr_copy.size;
+      arr_length = arr_copy.arr_length;
         for (int i = 0; i < size; ++i)
           {
             arr[i] = arr_copy.get_element(i);
