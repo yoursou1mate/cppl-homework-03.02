@@ -56,12 +56,13 @@ public:
     }
     
 
-    void replace_array(smart_array& arr_copy)
+    void copy_array(smart_array& arr_copy)
     {
       delete [] arr;
       arr = arr_copy.arr;
       size = arr_copy.size;
       arr_length = arr_copy.arr_length;
+        arr = new int[size];
         for (int i = 0; i < size; ++i)
           {
             arr[i] = arr_copy.get_element(i);
@@ -107,7 +108,7 @@ int main(int argc, const char * argv[]) {
         std::cout << std::endl;
         
         
-        arr.replace_array(new_array);
+        arr.copy_array(new_array);
         
         
         arr.print_array();
